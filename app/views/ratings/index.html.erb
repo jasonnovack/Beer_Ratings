@@ -16,88 +16,77 @@
   <ul class="nav nav-tabs">
     <li class="active"><a href="#tab1" data-toggle="tab">By Name</a></li>
     <li><a href="#tab2" data-toggle="tab">By Score</a></li>
+    <li><form class="navbar-search pull-left">
+      <input type="text" class="search-query" placeholder="Search">
+    </form></li>
   </ul>
+
   <div class="tab-content">
     <div class="tab-pane active" id="tab1">
-<% @ratings.sort! { |a,b| a.name.downcase <=> b.name.downcase } %> <!-- sorts the database by name -->
+      <%= will_paginate @ratings_by_name %>
+      
+      <% @ratings_by_name.each do |rating| %>
 
-  <% @ratings.each do |rating| %>
-    
-    <div class="rating">
-      <div class="row">
-        <div class="span7">
-          <strong><%= rating.name %></strong>
-        </div>
-        <div class="span1">
-          <%= rating.score %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="span9">
-           <%= rating.comment %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="meta">
+      <div class="rating">
+        <div class="row">
           <div class="span7">
-            <%= link_to 'View', rating %> | 
-            <span class="admin">
-              <%= link_to 'Edit', edit_rating_path(rating) %> | 
-            </span>
-            Rated on <%= rating.when_rated %>
+            <strong><%= rating.name %></strong>
+
+            <div class="meta">
+                | <%= link_to 'View', rating %> | 
+              <span class="admin">
+                <%= link_to 'Edit', edit_rating_path(rating) %> | 
+              </span>
+              Rated on <%= rating.when_rated %>
+            </div>
+          </div>
+        
+          <div class="span1">
+            <%= rating.score %>
           </div>
         </div>
       </div>
-    </div>
 
     <!-- <%= link_to 'Edit', edit_rating_path(rating) %>
     <%= link_to 'Destroy', rating, confirm: 'Are you sure?', method: :delete %> --> 
+      <% end %>
+      <%= will_paginate @ratings_by_name %>
+    </div>
 
 
 
-  <% end %>
-</div>
-<div class="tab-pane" id="tab2">
-  <% @ratings.sort_by! { |a| [ -a.score, a.name.downcase ] } %> <!-- sorts the database by name -->
+    <div class="tab-pane" id="tab2">
+      
+      <%= will_paginate @ratings_by_name %>
 
-  <% @ratings.each do |rating| %>
-    
-    <div class="rating">
-      <div class="row">
-        <div class="span7">
-          <strong><%= rating.name %></strong>
-        </div>
-        <div class="span1">
-          <%= rating.score %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="span9">
-           <%= rating.comment %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="meta">
+      <% @ratings_by_score.each do |rating| %>
+      
+      <div class="rating">
+        <div class="row">
           <div class="span7">
-            <%= link_to 'View', rating %> | 
-            <span class="admin">
-              <%= link_to 'Edit', edit_rating_path(rating) %> | 
-            </span>
-            Rated on <%= rating.when_rated %>
+            <strong><%= rating.name %></strong>
+     
+            <div class="meta">
+                | <%= link_to 'View', rating %> | 
+              <span class="admin">
+                <%= link_to 'Edit', edit_rating_path(rating) %> | 
+              </span>
+              Rated on <%= rating.when_rated %>
+            </div>
+          </div>
+          
+          <div class="span1">
+            <%= rating.score %>
           </div>
         </div>
       </div>
+
+      <!-- <%= link_to 'Edit', edit_rating_path(rating) %>
+      <%= link_to 'Destroy', rating, confirm: 'Are you sure?', method: :delete %> --> 
+      <% end %>
+      <%= will_paginate @ratings_by_score %>
     </div>
-    <form class=
-
-    <!-- <%= link_to 'Edit', edit_rating_path(rating) %>
-    <%= link_to 'Destroy', rating, confirm: 'Are you sure?', method: :delete %> --> 
-
-
-
-  <% end %>
-</div>
-</div>
+  </div>
 </div>
 
 

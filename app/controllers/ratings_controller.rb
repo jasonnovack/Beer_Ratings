@@ -2,12 +2,15 @@ class RatingsController < ApplicationController
   # GET /ratings
   # GET /ratings.json
   def index
-    @ratings = Rating.all
-
+    ratings = Rating 
+    @ratings_by_name = ratings.paginate(:order => 'name ASC', :page => params[:page], :per_page =>10)
+    @ratings_by_score = ratings.paginate(:order => 'score DESC', :page => params[:page], :per_page =>10)
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @ratings }
     end
+
   end
 
   # GET /ratings/1
