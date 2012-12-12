@@ -60,7 +60,7 @@
     <!-- <%= link_to 'Edit', edit_rating_path(rating) %>
     <%= link_to 'Destroy', rating, confirm: 'Are you sure?', method: :delete %> --> 
       <% end %>
-      <%= will_paginate @ratings %>
+      <%= will_paginate @ratings_by_name %>
       
     </div>
 
@@ -91,7 +91,7 @@
       <!-- <%= link_to 'Edit', edit_rating_path(rating) %>
       <%= link_to 'Destroy', rating, confirm: 'Are you sure?', method: :delete %> --> 
       <% end %>
-      <%= will_paginate @ratings %>
+      <%= will_paginate @ratings_by_score %>
     </div>
   </div>
 </div>
