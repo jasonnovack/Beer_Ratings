@@ -12,18 +12,28 @@
     <th></th>
   </tr> -->
 
+
 <div class="tabbable">
   <ul class="nav nav-tabs">
     <li class="active"><a href="#tab1" data-toggle="tab">By Name</a></li>
     <li><a href="#tab2" data-toggle="tab">By Score</a></li>
-    <li><form class="navbar-search pull-left">
-      <input type="text" class="search-query" placeholder="Search">
-    </form></li>
+    <li><%= form_tag ratings_path, :method=>'get' do %>
+      <p>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search", :name => nil %>
+      </p>
+    <% end %></li>
   </ul>
 
   <div class="tab-content">
     <div class="tab-pane active" id="tab1">
-      <%= will_paginate @ratings_by_name %>
+
+
+<!--<form class="navbar-form pull-left">
+  <input type="text" class="span2">
+  <button type="submit" class="btn">Submit</button>
+</form>-->
+
       
       <% @ratings_by_name.each do |rating| %>
 
@@ -50,15 +60,12 @@
     <!-- <%= link_to 'Edit', edit_rating_path(rating) %>
     <%= link_to 'Destroy', rating, confirm: 'Are you sure?', method: :delete %> --> 
       <% end %>
-      <%= will_paginate @ratings_by_name %>
+      <%= will_paginate @ratings %>
+      
     </div>
-
-
 
     <div class="tab-pane" id="tab2">
       
-      <%= will_paginate @ratings_by_name %>
-
       <% @ratings_by_score.each do |rating| %>
       
       <div class="rating">
@@ -84,7 +91,7 @@
       <!-- <%= link_to 'Edit', edit_rating_path(rating) %>
       <%= link_to 'Destroy', rating, confirm: 'Are you sure?', method: :delete %> --> 
       <% end %>
-      <%= will_paginate @ratings_by_score %>
+      <%= will_paginate @ratings %>
     </div>
   </div>
 </div>
