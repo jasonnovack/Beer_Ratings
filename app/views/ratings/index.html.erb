@@ -14,15 +14,13 @@
 
 
 <div class="tabbable">
-  <ul class="nav nav-tabs">
+  <ul class="nav nav-pills">
     <li class="active"><a href="#tab1" data-toggle="tab">By Name</a></li>
     <li><a href="#tab2" data-toggle="tab">By Score</a></li>
-    <li><%= form_tag ratings_path, :method=>'get' do %>
-      <p>
-        <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag "Search", :name => nil %>
-      </p>
-    <% end %></li>
+    <li><form class="navbar-search">
+      <input type="text" class="search-query span3" placeholder="Search" name="search">
+      <div class="icon-search"></div>
+     </form></li>
   </ul>
 
   <div class="tab-content">

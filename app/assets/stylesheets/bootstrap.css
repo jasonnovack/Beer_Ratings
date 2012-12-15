@@ -4316,7 +4316,7 @@ input[type="submit"].btn.btn-mini {
 }
 
 .navbar-search .search-query {
-  padding: 4px 14px;
+  padding: 4px 14px 4px 29px;
   margin-bottom: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
@@ -4325,6 +4325,13 @@ input[type="submit"].btn.btn-mini {
   -webkit-border-radius: 15px;
      -moz-border-radius: 15px;
           border-radius: 15px;
+}
+
+.navbar-search .icon-search {
+  position: absolute;
+  top: 7px;
+  left: 11px;
+  background-image: url('http://twitter.github.com/bootstrap/assets/img/glyphicons-halflings.png');
 }
 
 .navbar-static-top {
