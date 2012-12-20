@@ -2,8 +2,8 @@ class RatingsController < ApplicationController
   # GET /ratings
   # GET /ratings.json
   def index
-    @ratings_by_name = Rating.paginate(:order => 'name ASC', :page => params[:page], :per_page =>10, :conditions => ['name like ?', "%#{params[:search]}%"])
-    @ratings_by_score = Rating.paginate(:order => 'score DESC', :page => params[:page], :per_page =>10, :conditions => ['name like ?', "%#{params[:search]}%"])
+    @ratings_by_name = Rating.paginate(:order => 'name ASC', :page => params[:page], :per_page =>10, :conditions => ['UPPER(name) like ?', "%#{params[:search].upcase}%"])
+    @ratings_by_score = Rating.paginate(:order => 'score DESC', :page => params[:page], :per_page =>10, :conditions => ['UPPER(name) like ?', "%#{params[:search].upcase}%"])
 
     respond_to do |format|
       format.html # index.html.erb
