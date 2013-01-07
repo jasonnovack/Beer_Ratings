@@ -2,17 +2,6 @@
   <h1>Full List</h1> 
 </div>
 
- <!-- <tr>
-    <th>Name</th>
-    <th>Score</th>
-    <th>When rated</th>
-    <th>Comment</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr> -->
-
-
 <div class="tabbable">
   <ul class="nav nav-pills">
     <li class="active"><a href="#tab1" data-toggle="tab">By Name</a></li>
@@ -25,21 +14,12 @@
 
   <div class="tab-content">
     <div class="tab-pane active" id="tab1">
-
-
-<!--<form class="navbar-form pull-left">
-  <input type="text" class="span2">
-  <button type="submit" class="btn">Submit</button>
-</form>-->
-
-      
+      <% @ratings_by_name = Rating.search(params[:search]).paginate(:order => 'name ASC', :page => params[:page], :per_page =>10) %>
       <% @ratings_by_name.each do |rating| %>
-
       <div class="rating">
         <div class="row">
           <div class="span7">
             <strong><%= rating.name %></strong>
-
             <div class="meta">
                 | <%= link_to 'View', rating %> | 
               <span class="admin">
@@ -47,23 +27,20 @@
               </span>
               Rated on <%= rating.when_rated %>
             </div>
-          </div>
-        
+          </div>   
           <div class="span1">
             <%= rating.score %>
           </div>
         </div>
       </div>
-
     <!-- <%= link_to 'Edit', edit_rating_path(rating) %>
     <%= link_to 'Destroy', rating, confirm: 'Are you sure?', method: :delete %> --> 
       <% end %>
-      <%= will_paginate @ratings_by_name %>
-      
+      <%= will_paginate @ratings_by_name %>   
     </div>
 
     <div class="tab-pane" id="tab2">
-      
+      <% @ratings_by_score = Rating.search(params[:search]).paginate(:order => 'score DESC', :page => params[:page], :per_page =>10) %>
       <% @ratings_by_score.each do |rating| %>
       
       <div class="rating">
