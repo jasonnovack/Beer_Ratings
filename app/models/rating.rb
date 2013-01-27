@@ -6,7 +6,7 @@ class Rating < ActiveRecord::Base
 	def self.search(query)
 		words = query.to_s.strip.split
 		words.inject(scoped) do |combined_scope, word|
-			combined_scope.where("name LIKE ?", "%#{word}%")
+			combined_scope.where("name ILIKE ?", "%#{word}%")
 		end
 	end
 end
