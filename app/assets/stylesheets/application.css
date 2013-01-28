@@ -14,8 +14,13 @@
 
 body {
 	padding-top: 40px;
+	font-family: arial,sans-serif;
 }
 
-.pxpx {
-	padding-top: 40px;
+#bg {
+	position:fixed;
+	top:50px;
+	left:0;
+	min-width:100%;
+	min-height:100%;
 }

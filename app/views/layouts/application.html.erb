@@ -7,25 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
- 
-
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
         <a class="brand" href="http://beerratings.herokuapp.com">Jason's Beer Ratings</a>
-				<ul class="nav">
+				<!--<ul class="nav">
 					<li><%= link_to "Full List", ratings_path %></li>
-				</ul>
-				<form class="navbar-search pull-left">
-      		<input type="text" class="search-query span3" placeholder="Find Some Beers" name="search">
+				</ul>-->
+				<form class="navbar-search">
+      		<input type="text" class="search-query span2" placeholder="Find Some Beers" name="search">
     			<div class="icon-search"></div>
      		</form>
 			</div>
 		</div>
 	</div>
 
-	<div class="container">
+	<div class="container content-main">
 		<%= yield %>
 	</div>
 

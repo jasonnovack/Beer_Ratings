@@ -165,6 +165,7 @@ body {
   line-height: 20px;
   color: #333333;
   background-color: #ffffff;
+  background-image: url('/assets/px_by_Gre3g.png');
 }
 
 a {
@@ -226,6 +227,16 @@ a:hover {
 .navbar-fixed-top .container,
 .navbar-fixed-bottom .container {
   width: 940px;
+}
+
+.content-main {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 18px;
+  color: #333;
 }
 
 .span12 {
