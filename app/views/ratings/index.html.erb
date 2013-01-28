@@ -1,10 +1,19 @@
 <div class="pxpx">
 </div>
 
-<div class="tabbable">
+
   <ul class="nav nav-pills">
-    <li class="active"><a href="#tab1" data-toggle="tab">By Name</a></li>
-    <li><a href="#tab2" data-toggle="tab">By Score</a></li>
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sort List
+        <b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a tabindex="-1" href="#tab1" data-toggle="tab">Sort by Name</a></li>
+        <li><a tabindex="-1" href="#tab2" data-toggle="tab">Sort by Score</a></li>
+        <li><a tabindex="-1" href="#tab3" data-toggle="tab">Sort by When Rated</a></li>
+      </ul>
+    <!--<li class="active"><a href="#tab1" data-toggle="tab">By Name</a></li>
+    <li><a href="#tab2" data-toggle="tab">By Score</a></li>-->
   </ul>
 
   <div class="tab-content">
@@ -23,7 +32,7 @@
               Rated on <%= rating.when_rated %>
             </div>
           </div>   
-          <div class="span1">
+          <div class="span2">
             <%= rating.score %>
           </div>
         </div>
@@ -37,12 +46,10 @@
     <div class="tab-pane" id="tab2">
       <% @ratings_by_score = Rating.search(params[:search]).paginate(:order => 'score DESC', :page => params[:page], :per_page =>10) %>
       <% @ratings_by_score.each do |rating| %>
-      
       <div class="rating">
         <div class="row">
           <div class="span7">
             <strong><%= rating.name %></strong>
-     
             <div class="meta">
                 | <%= link_to 'View', rating %> | 
               <span class="admin">
@@ -51,20 +58,43 @@
               Rated on <%= rating.when_rated %>
             </div>
           </div>
-          
-          <div class="span1">
+          <div class="span2">
             <%= rating.score %>
           </div>
         </div>
       </div>
-
       <!-- <%= link_to 'Edit', edit_rating_path(rating) %>
       <%= link_to 'Destroy', rating, confirm: 'Are you sure?', method: :delete %> --> 
       <% end %>
       <%= will_paginate @ratings_by_score %>
     </div>
+
+    <div class="tab-pane" id="tab3">
+      <% @ratings_by_when_rated = Rating.search(params[:search]).paginate(:order => 'when_rated DESC', :page => params[:page], :per_page =>10) %>
+      <% @ratings_by_when_rated.each do |rating| %> 
+      <div class="rating">
+        <div class="row">
+          <div class="span7">
+            <strong><%= rating.name %></strong>  
+            <div class="meta">
+                | <%= link_to 'View', rating %> | 
+              <span class="admin">
+                <%= link_to 'Edit', edit_rating_path(rating) %> | 
+              </span>
+              Rated on <%= rating.when_rated %>
+            </div>
+          </div>          
+          <div class="span1">
+            <%= rating.score %>
+          </div>
+        </div>
+      </div>
+      <!-- <%= link_to 'Edit', edit_rating_path(rating) %>
+      <%= link_to 'Destroy', rating, confirm: 'Are you sure?', method: :delete %> --> 
+      <% end %>
+      <%= will_paginate @ratings_by_when_rated %>
+    </div>
   </div>
-</div>
 
 
 <!-- <%= link_to 'New Rating', new_rating_path %> -->
