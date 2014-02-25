@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-oo = Excelx.new("RatingsDB.xlsx")
+oo = Roo:Excelx.new("RatingsDB.xlsx")
 oo.default_sheet = oo.sheets.first
 
 2.upto(oo.last_row) do |line|
