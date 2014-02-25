@@ -79,10 +79,5 @@ class RatingsController < ApplicationController
     end
   end
 
-  def search
-    fff = Rating.search(params[:search])
-    @ratings_by_name = fff.paginate(:order => 'name ASC', :page => params[:page], :per_page =>10)
-    @ratings_by_score = fff.paginate(:order => 'score DESC', :page => params[:page], :per_page =>10)
-    @ratings_by_when_rated = fff.paginate(:order => 'when_rated DESC', :page => params[:page], :per_page =>10)
-  end
+
 end

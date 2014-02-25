@@ -9,4 +9,8 @@ class Rating < ActiveRecord::Base
 			combined_scope.where("name ILIKE ?", "%#{word}%")
 		end
 	end
+
+	def self.sort(sortby)
+		
+	end
 end
